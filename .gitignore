@@ -1,6 +1,6 @@
 # built application files
-*.apk
 *.ap_
+*.apk
 
 # files for the dex VM
 *.dex
@@ -20,3 +20,7 @@ proguard-project.txt
 
 #log
 log.txt
+
+# Eclipse project files
+.classpath
+.project
