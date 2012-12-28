@@ -90,6 +90,8 @@ public class Identificar extends Activity implements TextWatcher
 						//removiendo los guiones
 						number = number.replace("-","");
 						number = number.replace(" ","");
+						number = number.replace(")","");
+						number = number.replace("(","");
 						if(number.length()>8)
 						 {
 							Toast.makeText(getBaseContext(),"El número "+number+" excede los 8 dígitos",Toast.LENGTH_LONG).show();
@@ -152,12 +154,12 @@ public class Identificar extends Activity implements TextWatcher
 		String movRegEx = "([83]{2}[[2]|[7-9]]{1}[0-9]{5}$)|" +
 				"([8]{1}[4-5]{1}[5-8]{1}[0-9]{5}$)|" +
 				"([86]{2}[7-8]{1}[0-9]{5}$)|" +
-				"([87]{2}[5-9]{1}[0-9]{5}$)|" +
+				"([8]{1}[7]{1}[5-9]{1}[0-9]{5}$)|" +
 				"([880]{3}[2-9]{1}[0-9]{5}$)|" +
-				"([88]{2}[[1]|[6]|[8]]{1}[0-9]{5}$)|" +
+				"([88]{2}[(1)|(6)|(8)]{1}[0-9]{5}$)|" +
 				"([887]{3}[1-9]{1}[0-9]{4})$|" +
 				"([889]{3}[3-9]{1}[0-9]{4})$|" +
-				"([89]{2}[5-9]{1}[0-9]{5}$)";
+				"([8]{1}[9]{1}[5-9]{1}[0-9]{5}$)";
 		Pattern pm = Pattern.compile(movRegEx);
 		Matcher mm = pm.matcher(numb);
 		
