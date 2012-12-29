@@ -30,6 +30,7 @@ public class Identificar extends Activity implements TextWatcher
 	EditText editText1;
 	TextView textView2;
 	Button button1;
+	String input;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +39,14 @@ public class Identificar extends Activity implements TextWatcher
 		
 		textView2 = (TextView)findViewById(R.id.textView2);
 		button1 = (Button)findViewById(R.id.button1);
-		button1.setOnClickListener(new OnClickListener(){
+		
+		/*button1.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
 				textView2.setText(compareNum(editText1.getText().toString()));
 				//finish();
 			}
 		}
-		);
-		
+		);*/
 	}
 
 	@Override
@@ -122,7 +123,7 @@ public class Identificar extends Activity implements TextWatcher
 	                		}
 	                		else
 	                		{
-	                			Toast.makeText(getBaseContext(),"Num: "+number,Toast.LENGTH_LONG).show();
+	                			//Toast.makeText(getBaseContext(),"Num: "+number,Toast.LENGTH_LONG).show();
 	                		}
 			}
 				break;
@@ -147,6 +148,20 @@ public class Identificar extends Activity implements TextWatcher
 		
 	}
 
+	public void comparar(View v){
+		
+		input = editText1.getText().toString();
+		
+		if((input==null)||(input==""))
+		{
+			Toast.makeText(getBaseContext(),"Introduce un número telefónico",Toast.LENGTH_LONG).show();
+		}
+		else
+		{	
+		textView2.setText(compareNum(input));
+		}
+	}
+	
 	public String compareNum(String numb){
 		String carrier = "No definido";
 		

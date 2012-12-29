@@ -46,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/imageButton1"
+            android:onClick="comparar"
             android:text="@string/idBt" />
 
     </RelativeLayout>
