@@ -7,49 +7,35 @@
     android:showDividers="beginning|middle|end"
     tools:context=".Identificar" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="136dp" >
+            <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_toLeftOf="@+id/editText1"
-            android:contentDescription="@string/contact_button_desc"
-            android:onClick="showContacts"
-            android:src="@drawable/contacts"
-            android:background="@null" />
+            <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="top|left"
+                android:layout_margin="1dp"
+                android:background="@null"
+                android:contentDescription="@string/contact_button_desc"
+                android:onClick="showContacts"
+                android:src="@drawable/contacts" />
 
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="70dp"
-            android:layout_marginTop="35dp"
-            android:ems="6"
-            android:hint="@string/formato"
-            android:inputType="phone"
-            android:maxLength="8" >
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:ems="6"
+                android:hint="@string/formato"
+                android:inputType="phone"
+                android:maxLength="8"
+                android:textSize="28sp" >
 
-            <requestFocus />
-        </EditText>
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/imageButton1"
-            android:onClick="comparar"
-            android:text="@string/idBt" />
-
-    </RelativeLayout>
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,10 +55,10 @@
             android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
+            android:layout_above="@+id/textView1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="70dp"
-            android:background="@null"
+            android:layout_marginBottom="86dp"
+            android:background="@drawable/call"
             android:contentDescription="@string/call_button_desc"
             android:onClick="Call"
             android:src="@drawable/call" />
@@ -81,11 +67,22 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_above="@+id/imageButton2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="18dp"
+            android:layout_marginBottom="46dp"
             android:text="@string/operador_nd"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:onClick="comparar"
+            android:text="@string/idBt" />
+
     </RelativeLayout>
 
 </LinearLayout>
