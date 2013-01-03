@@ -165,7 +165,8 @@ public class Identificar extends Activity implements TextWatcher
 	public String compareNum(String numb){
 		String carrier = "No definido";
 		
-		//String movRegEx = "[89]{2}[5-9]{1}[0-9]{5}$";
+		//This is where regEx magic happens
+		
 		String movRegEx = "([83]{2}[[2]|[7-9]]{1}[0-9]{5}$)|" +
 				"([8]{1}[4-5]{1}[5-8]{1}[0-9]{5}$)|" +
 				"([86]{2}[7-8]{1}[0-9]{5}$)|" +
@@ -190,7 +191,7 @@ public class Identificar extends Activity implements TextWatcher
 				"([874]{3}[1-9]{1}[0-9]{4}$)|" +
 				"([87]{2}[0-2]{1}[0-9]{5}$)|" +
 				"([88]{2}[2-5]{1}[0-9]{5}$)|" +
-				"([89]{2}[0-4]{1}[0-9]{5}$)";
+				"([8]{1}[9]{1}[0-4]{1}[0-9]{5}$)";
 		
 		Pattern p = Pattern.compile(claroRegEx);
 		Matcher m = p.matcher(numb);
