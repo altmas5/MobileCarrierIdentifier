@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="136dp" >
+        android:layout_height="wrap_content" >
 
         <ImageButton
             android:id="@+id/imageButton1"
@@ -42,20 +42,11 @@
             <requestFocus />
         </EditText>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="@string/operador_nd"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.42" >
+        android:layout_height="match_parent" >
 
         <TextView
             android:id="@+id/textView1"
@@ -66,17 +57,36 @@
             android:gravity="bottom|right"
             android:text="@string/author" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/textView1"
-            android:layout_centerHorizontal="true"
-            android:contentDescription="@string/call_button_desc"
-            android:onClick="Call"
-            android:src="@drawable/call"
-            android:background="@null" />
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@null"
+                    android:contentDescription="@string/call_button_desc"
+                    android:onClick="Call"
+                    android:src="@drawable/call" />
 
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="28dp"
+                    android:onClick="comparar"
+                    android:text="@string/idBt" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/operador_nd"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                
     </RelativeLayout>
 
 </LinearLayout>
