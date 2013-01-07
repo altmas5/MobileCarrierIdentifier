@@ -93,6 +93,8 @@ public class Identificar extends Activity implements TextWatcher
 						number = number.replace(" ","");
 						number = number.replace(")","");
 						number = number.replace("(","");
+						number = number.replace("+505","");
+						
 						if(number.length()>8)
 						 {
 							Toast.makeText(getBaseContext(),"El número "+number+" excede los 8 dígitos",Toast.LENGTH_LONG).show();
