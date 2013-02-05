@@ -138,8 +138,11 @@ public class Identificar extends Activity implements TextWatcher
 
 	}
 	
-	public void call(View view){
-		
+	public void Call(View view){
+		input = editText1.getText().toString();
+		String num = "tel:"+input;
+		Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(num));
+		startActivity(callIntent);
 		
 	}
 
