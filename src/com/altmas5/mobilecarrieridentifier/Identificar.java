@@ -30,13 +30,14 @@ public class Identificar extends Activity implements TextWatcher
 	EditText editText1;
 	TextView textView2;
 	Button button1;
-	String input;
+	String input = "";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_identificar);
 		
+		editText1 = (EditText)findViewById(R.id.editText1);
 		textView2 = (TextView)findViewById(R.id.textView2);
 		button1 = (Button)findViewById(R.id.button1);
 		
@@ -93,6 +94,8 @@ public class Identificar extends Activity implements TextWatcher
 						number = number.replace(" ","");
 						number = number.replace(")","");
 						number = number.replace("(","");
+						number = number.replace("+505","");
+						
 						if(number.length()>8)
 						 {
 							Toast.makeText(getBaseContext(),"El número "+number+" excede los 8 dígitos",Toast.LENGTH_LONG).show();
@@ -111,7 +114,7 @@ public class Identificar extends Activity implements TextWatcher
 			finally
 			{
 				if (cursor != null){cursor.close();}
-					editText1 = (EditText)findViewById(R.id.editText1);
+					
 					//deditText1.addTextChangedListener(this);
 					editText1.setText(number);
 	                
@@ -135,8 +138,11 @@ public class Identificar extends Activity implements TextWatcher
 
 	}
 	
-	public void call(View view){
-		
+	public void Call(View view){
+		input = editText1.getText().toString();
+		String num = "tel:"+input;
+		Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(num));
+		startActivity(callIntent);
 		
 	}
 
@@ -150,11 +156,17 @@ public class Identificar extends Activity implements TextWatcher
 
 	public void comparar(View v){
 		
-		input = editText1.getText().toString();
+		try {
+			input = editText1.getText().toString();
+		} catch (Exception e) {
+			Log.e(DEBUG_TAG,"Ha fallado"+ e.getMessage());
+			e.printStackTrace();
+		}
 		
-		if((input==null)||(input==""))
+		
+		if((input==null)||(input=="")||(input.length()<8))
 		{
-			Toast.makeText(getBaseContext(),"Introduce un número telefónico",Toast.LENGTH_LONG).show();
+			Toast.makeText(getBaseContext(),"Introduce un número telefónico de 8 dígitos",Toast.LENGTH_LONG).show();
 		}
 		else
 		{	
