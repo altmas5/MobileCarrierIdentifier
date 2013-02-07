@@ -1,3 +1,21 @@
+/* Mobile Carrier Identifier
+ *
+ * Copyright (C) 2012 Jorge Vallecillo
+ *
+ * Este programa es software libre: usted puede redistribuirlo y/o modificarlo 
+ * bajo los términos de la Licencia Pública General de GNU según es publicada por 
+ * la Free Software Foundation, bien de la versión 3 de la Licencia, o 
+ * (a su elección) cualquier versión posterior.
+ *
+ * Este programa se distribuye con la esperanza de que sea útil, 
+ * pero SIN NINGUNA GARANTÍA, incluso sin la garantía implícita de 
+ * COMERCIALIZACIÓN o IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Vea 
+ * la Licencia Pública General de GNU para más detalles.
+ *
+ * Debería haber recibido una copia de la Licencia Pública General de GNU 
+ * junto con este programa. Si no es así, consulte <http://www.gnu.org/licenses/>.
+ *
+*/
 package com.altmas5.mobilecarrieridentifier;
 
 import java.util.regex.Matcher;
