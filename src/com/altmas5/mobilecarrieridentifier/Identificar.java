@@ -197,7 +197,7 @@ public class Identificar extends Activity implements TextWatcher
 		
 		//This is where regEx magic happens
 		
-		String movRegEx = "([8]{1}[2]{1}[5-9]{1}[0-9]{5}$)|" +
+		String movRegEx = "([8]{1}[2]{1}[4-9]{1}[0-9]{5}$)|" +
 				  		  "([83]{2}[[2]|[7-9]]{1}[0-9]{5}$)|" +
 				  		  "([8]{1}[4]{1}[5-8]{1}[0-9]{5}$)|" +
 				  		  "([8]{1}[5]{1}[5-9]{1}[0-9]{5}$)|" +
@@ -216,7 +216,7 @@ public class Identificar extends Activity implements TextWatcher
 		Pattern pc = Pattern.compile(convRegEx);
 		Matcher mc = pc.matcher(numb);
 		
-		String claroRegEx = "([8]{1}[2]{1}[0]{1}[0-9]{5}$)|" +
+		String claroRegEx = "([8]{1}[2]{1}[0-1]{1}[0-9]{5}$)|" +
 			    			"([83]{2}[[3]|[5]|[6]]{1}[0-9]{5}$)|" +
 			    			"([84]{2}[[0-4]|[9]]{1}[0-9]{5}$)|" +
 			    			"([85]{2}[0-4]{1}[0-9]{5}$)|" +
