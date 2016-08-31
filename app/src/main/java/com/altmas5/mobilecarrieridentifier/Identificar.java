@@ -3,7 +3,7 @@
  * Copyright (C) 2012 Jorge Vallecillo
  *
  * Este programa es software libre: usted puede redistribuirlo y/o modificarlo 
- * bajo los términos de la Licencia Pública General de GNU según es publicada por 
+ * bajo los términos de la Licencia Pública General de GNU según es publicada por
  * la Free Software Foundation, bien de la versión 3 de la Licencia, o 
  * (a su elección) cualquier versión posterior.
  *
@@ -49,12 +49,12 @@ public class Identificar extends Activity implements TextWatcher
 	TextView textView2;
 	Button button1;
 	String input = "";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_identificar);
-		
+
 		editText1 = (EditText)findViewById(R.id.editText1);
 		textView2 = (TextView)findViewById(R.id.textView2);
 		button1 = (Button)findViewById(R.id.button1);
@@ -76,15 +76,15 @@ public class Identificar extends Activity implements TextWatcher
 	}
 
 	public void showContacts(View view){
-		
+
 		Intent contactPicked = new Intent(Intent.ACTION_PICK, Contacts.CONTENT_URI);
 		ImageButton ib = (ImageButton) findViewById(R.id.imageButton1);
-		
+
 		startActivityForResult(contactPicked, CONTACT_PICKER_RESULT);
-		
-		
+
+
 	}
-	
+
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
 		if (resultCode == RESULT_OK)
@@ -98,14 +98,14 @@ public class Identificar extends Activity implements TextWatcher
 					// Obtener ID de contacto
 					String id = result.getLastPathSegment();
 					// consultar numeros
-					cursor = getContentResolver().query(Phone.CONTENT_URI,  
-							null, Phone.CONTACT_ID + "=?", new String[] { id },  
+					cursor = getContentResolver().query(Phone.CONTENT_URI,
+							null, Phone.CONTACT_ID + "=?", new String[] { id },
 							null);
 					int numberIdx = cursor.getColumnIndex(Phone.NUMBER);
 
-					if (cursor.moveToFirst()) 
-					{  
-						//recorrer todos los nums encontrados						
+					if (cursor.moveToFirst())
+					{
+						//recorrer todos los nums encontrados
 						number = cursor.getString(numberIdx);
 						//removiendo los guiones
 						number = number.replace("-","");
@@ -113,34 +113,34 @@ public class Identificar extends Activity implements TextWatcher
 						number = number.replace(")","");
 						number = number.replace("(","");
 						number = number.replace("+505","");
-						
+
 						if(number.length()>8)
 						 {
 							Toast.makeText(getBaseContext(),"El número "+number+" excede los 8 dígitos",Toast.LENGTH_LONG).show();
 						 }
-						Log.v(DEBUG_TAG, "Obtuvo num : " + number);  
-					} 
-					else 
-					{  
-						Log.w(DEBUG_TAG, "Sin resultados");  
-					}  
-			} 
-			catch (Exception e) 
+						Log.v(DEBUG_TAG, "Obtuvo num : " + number);
+					}
+					else
+					{
+						Log.w(DEBUG_TAG, "Sin resultados");
+					}
+			}
+			catch (Exception e)
 			{
 			 Log.e(DEBUG_TAG, "Falla al obtener la info", e);
 			}
 			finally
 			{
 				if (cursor != null){cursor.close();}
-					
+
 					//deditText1.addTextChangedListener(this);
 					editText1.setText(number);
-	                
-	            	
-	                	if (number.length() == 0) 
-	                		{  
-	                		Toast.makeText(this, "No se ha encontrado num para contacto.",  
-	                            Toast.LENGTH_LONG).show();  
+
+
+	                	if (number.length() == 0)
+	                		{
+	                		Toast.makeText(this, "No se ha encontrado num para contacto.",
+	                            Toast.LENGTH_LONG).show();
 	                		}
 	                		else
 	                		{
@@ -151,17 +151,17 @@ public class Identificar extends Activity implements TextWatcher
 			}
 		}
 		else{
-			Log.w(DEBUG_TAG, "Warning: resultado de la actividad no retorno OK"); 
+			Log.w(DEBUG_TAG, "Warning: resultado de la actividad no retorno OK");
 		}
 
 	}
-	
+
 	public void Call(View view){
 		input = editText1.getText().toString();
 		String num = "tel:"+input;
 		Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(num));
 		startActivity(callIntent);
-		
+
 	}
 
 	@Override
@@ -169,34 +169,34 @@ public class Identificar extends Activity implements TextWatcher
 
 		//String op = compareNum(et.toString());
 		//textView2.setText(op);
-		
+
 	}
 
 	public void comparar(View v){
-		
+
 		try {
 			input = editText1.getText().toString();
 		} catch (Exception e) {
 			Log.e(DEBUG_TAG,"Ha fallado"+ e.getMessage());
 			e.printStackTrace();
 		}
-		
-		
+
+
 		if((input==null)||(input=="")||(input.length()<8))
 		{
 			Toast.makeText(getBaseContext(),"Introduce un número telefónico de 8 dígitos",Toast.LENGTH_LONG).show();
 		}
 		else
-		{	
+		{
 		textView2.setText(compareNum(input));
 		}
 	}
-	
+
 	public String compareNum(String numb){
 		String carrier = "No definido";
-		
+
 		//This is where regEx magic happens
-		
+
 		String movRegEx = " " +
 						  "([81]{2}[0-9]{6}$)|" +
 						  "([8]{1}[2]{1}[4-9]{1}[0-9]{5}$)|" +
@@ -210,13 +210,17 @@ public class Identificar extends Activity implements TextWatcher
 				  		  "([887]{3}[1-9]{1}[0-9]{4})$|" +
 				  		  "([889]{3}[3-9]{1}[0-9]{4})$|" +
 				  		  "([8]{1}[9]{1}[5-9]{1}[0-9]{5}$)";
-		
+
 		Pattern pm = Pattern.compile(movRegEx);
 		Matcher mm = pm.matcher(numb);
-		
+
 		String convRegEx = "[2]{1}[0-9]{7}$";
 		Pattern pc = Pattern.compile(convRegEx);
 		Matcher mc = pc.matcher(numb);
+
+		String cooRegEx = "[688]{3}[0-9]{5}$";
+		Pattern pcoo = Pattern.compile(cooRegEx);
+		Matcher mcoo = pcoo.matcher(numb);
 		
 		String claroRegEx = " " +
 							"([5]{1}[0-9]{7}$)|" +
@@ -228,10 +232,10 @@ public class Identificar extends Activity implements TextWatcher
 			    			"([87]{2}[0-4]{1}[0-9]{5}$)|" +
 			    			"([88]{2}[2-5]{1}[0-9]{5}$)|" +
 			    			"([8]{1}[9]{1}[0-4]{1}[0-9]{5}$)";
-		
+
 		Pattern p = Pattern.compile(claroRegEx);
 		Matcher m = p.matcher(numb);
-		
+
 		try {
 
 			if(mc.matches()){
@@ -241,27 +245,30 @@ public class Identificar extends Activity implements TextWatcher
 			{
 				carrier = "Movistar";
 			}
+			else if(mcoo.matches()){
+				carrier = "CooTel";
+			}
 			else if(m.matches())
 			{
 				carrier = "Claro";
 			}
-			
+
 		} catch (Exception e) {
 			Log.e(DEBUG_TAG,"Ha fallado");
 		}
-		
+
 		return carrier;
 	}
-	
+
 	@Override
 	public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
